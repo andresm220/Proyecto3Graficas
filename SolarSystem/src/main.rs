@@ -177,7 +177,7 @@ fn main() {
             draw_stars(&mut buf, &cam, &proj, &stars, win.width, win.height);
         }
 
-        // Órbitas (podrías también desactivarlas en modo rápido si quieres todavía más FPS)
+        // Órbitas 
         for p in &planets {
             if p.draw_orbit {
                 draw_orbit_3d(

@@ -71,7 +71,7 @@ impl Camera {
             if win.key_pressed(*key) {
                 let target = targets[idx];
 
-                // Posición “bonita”: un poco arriba y atrás del planeta, mirando hacia él
+                // Posición bonita: un poco arriba y atrás del planeta, mirando hacia él
                 let (_, _, fwd) = self.basis();
                 let offset_up = Vec3::new(0.0, 30.0, 0.0);
                 let offset_back = fwd.mul(-140.0);
