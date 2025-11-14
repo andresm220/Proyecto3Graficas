@@ -8,6 +8,8 @@ mod hud;
 mod bodies;
 mod orbits;
 mod shading;
+mod ship;
+mod obj_loader;
 
 use std::time::{Instant, Duration};
 
@@ -20,12 +22,13 @@ use crate::bodies::body::Body;
 use crate::orbits::draw_orbit_3d;
 use crate::draw::{BG, rgb, draw_disc};
 use crate::shading::{PlanetKind, draw_shaded_sphere};
+use crate::ship::Ship;
 
 fn resolve_collisions(cam: &mut Camera, sun: &Body, planets: &[Body], t: f32) {
     // evita que la cámara entre al sol y planetas
     let mut push_out = |center: crate::math::Vec3, radius: f32| {
         let diff = cam.pos.sub(center);
-        let dist = diff.len();
+        let dist = diff.len();   
         if dist <= 0.0001 {
             return;
         }
@@ -45,6 +48,7 @@ fn resolve_collisions(cam: &mut Camera, sun: &Body, planets: &[Body], t: f32) {
         push_out(p.pos(t), p.radius * 1.5);
     }
 }
+
 
 fn main() {
     // Ventana relativamente ligera
@@ -124,6 +128,9 @@ fn main() {
         PlanetKind::Ice,       // Verdia
         PlanetKind::Volcanic,  // Crimson
     ];
+
+    // Nave que sigue a la cámara
+    let ship = Ship::new();
 
     // modo bonito vs modo rápido (P)
     let mut pretty_mode = true;
@@ -269,6 +276,9 @@ fn main() {
             }
         }
 
+        // Nave siguiendo a la cámara
+        ship.draw(&mut buf, win.width, win.height, &cam, &proj);
+
         // HUD
         reticle(&mut buf, win.width, win.height);
 
@@ -278,3 +288,4 @@ fn main() {
         std::thread::sleep(Duration::from_millis(16));
     }
 }
+
