@@ -59,29 +59,14 @@ cargo run --release
 
 📁 Estructura del proyecto
 
-Basado en tu estructura real:
 
-src/
- ├── bodies/
- │    ├── body.rs
- │    ├── moon.rs
- │    └── mod.rs
- ├── camera.rs
- ├── draw.rs
- ├── hud.rs
- ├── main.rs
- ├── math.rs
- ├── obj_loader.rs
- ├── orbits.rs
- ├── projector.rs
- ├── shading.rs
- ├── ship.rs
- ├── skybox.rs
- └── window.rs
-Cargo.toml
-Cargo.lock
-nave_andres.obj   ← aquí está tu modelo 3D
-.gitignore
+
+
+<img width="319" height="628" alt="image" src="https://github.com/user-attachments/assets/4be92860-5595-47e9-bac3-804d788e68c3" />
+
+
+
+
 
 🧠 Funcionamiento interno
 Render 3D por software
